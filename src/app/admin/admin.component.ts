@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../shared/models';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { EditPersonComponent } from './edit-person.component';
 
 const people: Person[] = [
   new Person('Mitko Mitkoff', 3, 10, 1980),
@@ -21,21 +22,32 @@ const people: Person[] = [
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns: string[] = ['name', 'dateOfBirth', 'edit'];
-  // displayedColumns: ['name', 'dateOfBirth', 'edit'];
   people: Person[];
 
   dataSource = new MatTableDataSource<Person>(people);
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit() {
   }
 
-  editProfile(row) {
-    console.log('edit profile', row);
+  editProfile(person: Person): void {
+    console.log('edit profile', person);
+    const dialogRef = this.dialog.open(EditPersonComponent, {
+      width: '600px',
+      panelClass: 'custom-dialog-container',
+      data: person
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        console.log('the dialog closed with result', result);
+      }
+    );
   }
 
 }
