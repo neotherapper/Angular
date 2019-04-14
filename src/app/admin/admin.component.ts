@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
   editProfile(person: Person): void {
     console.log('edit profile', person);
     const dialogRef = this.dialog.open(EditPersonComponent, {
-      width: '600px',
+      width: '800px',
       panelClass: 'custom-dialog-container',
       data: person
     });

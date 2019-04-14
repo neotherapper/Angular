@@ -5,8 +5,54 @@
     <button mat-icon-button (click)="cancel()">
       <mat-icon>close</mat-icon>
     </button>
-      <!-- <md-button class="md-icon-button" ng-click="cancel()"></md-button>
-        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-      </md-button> -->
   </mat-toolbar>
+
+  <form [formGroup]="editPersonForm" (ngSubmit)="editPerson()" class="edit-person-form">
+    <br>
+    <mat-dialog-content>
+      <mat-card>
+        <h4>Full Name</h4>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Start typing here...." formControlName="name">
+        </mat-form-field>
+        <!-- <mat-error *ngIf="name.errors.required">You must make a selection</mat-error> -->
+      </mat-card>
+      <br>
+      <mat-card>
+        <mat-form-field class="example-full-width">
+          <h4>Day of Birth</h4>
+          <mat-select formControlName="dayOfBirth">
+            <mat-option *ngFor="let day of days" [value]="day">
+              {{day}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <h4>Month of Birth</h4>
+          <mat-select formControlName="monthOfBirth">
+            <mat-option *ngFor="let month of months" [value]="month">
+              {{month}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <h4>Year of Birth</h4>
+          <mat-select formControlName="yearOfBirth">
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <mat-error *ngIf="yearOfBirth.er">You must make a selection</mat-error> -->
+      </mat-card>
+      <br>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-raised-button type="submit" color="primary">Submit</button>
+      <button mat-button>Cancel</button>
+    </mat-dialog-actions>
+  </form>
 </div>

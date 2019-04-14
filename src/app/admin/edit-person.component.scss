@@ -1,9 +1,13 @@
-.mat-dialog-container {
-  padding: 0;
+.edit-person-form {
+  width: 100%;
 }
 
-.mat-icon-button {
-  // position: relative;
+mat-dialog-actions {
+  justify-content: center;
+}
+
+mat-form-field {
+  margin-right: 20px;
 }
 
 .example-fill-remaining-space {
